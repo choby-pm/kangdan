@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import HeroVideo from "@/components/HeroVideo";
+import { SERVICES } from "@/data/services";
 
 export const metadata: Metadata = {
   title: "노동법률사무소 강단 | 부당해고·임금체불 전문 공인노무사",
@@ -26,32 +27,7 @@ const TRUST_STATS = [
   { icon: "🏛️", value: "다수", label: "노동위원회 대응 경험" },
 ];
 
-const CORE_SERVICES = [
-  {
-    href: "/services/unfair-dismissal",
-    icon: "⚖️",
-    title: "부당해고·부당징계",
-    desc: "부당하게 해고·징계당한 근로자의 권리를 구제합니다.",
-  },
-  {
-    href: "/services/wage-dispute",
-    icon: "💰",
-    title: "임금체불·퇴직금",
-    desc: "밀린 임금과 퇴직금을 끝까지 받아낼 수 있도록 돕습니다.",
-  },
-  {
-    href: "/services/workplace-harassment",
-    icon: "🛡️",
-    title: "직장 내 괴롭힘·성희롱",
-    desc: "직장 내 괴롭힘·성희롱 피해에 대한 신고와 대응을 지원합니다.",
-  },
-  {
-    href: "/services/industrial-accident",
-    icon: "🏗️",
-    title: "산업재해",
-    desc: "산업재해 승인부터 보상까지 전 과정을 함께합니다.",
-  },
-];
+const CORE_SERVICES = SERVICES.slice(0, 4);
 
 const CASE_PREVIEWS = [
   {
@@ -126,19 +102,35 @@ export default function HomePage() {
         <section className="bg-gray-50 px-6 py-16">
           <div className="mx-auto max-w-5xl">
             <h2 className="text-center text-2xl font-bold text-black">업무분야</h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 flex flex-col gap-6">
               {CORE_SERVICES.map((service) => (
-                <Link
+                <div
                   key={service.href}
-                  href={service.href}
-                  className="rounded-lg bg-white p-6 shadow-sm transition hover:shadow-md"
+                  className="w-full rounded-lg bg-white p-6 shadow-sm md:p-8"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-xl">
-                    {service.icon}
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-xl">
+                      {service.icon}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <Link href={service.href} className="text-lg font-bold text-black hover:underline">
+                        {service.title}
+                      </Link>
+                      <p className="mt-2 text-sm text-gray-500">{service.description}</p>
+                      <div className="mt-4 flex flex-col gap-2">
+                        {service.faq.slice(0, 3).map((item) => (
+                          <Link
+                            key={item.question}
+                            href={`${service.href}#faq`}
+                            className="block truncate rounded-md border border-gray-300 px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 md:overflow-visible md:text-clip md:whitespace-normal"
+                          >
+                            Q. {item.question}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="mt-4 font-semibold text-black">{service.title}</h3>
-                  <p className="mt-2 text-sm text-gray-500">{service.desc}</p>
-                </Link>
+                </div>
               ))}
             </div>
             <div className="mt-10 text-center">
