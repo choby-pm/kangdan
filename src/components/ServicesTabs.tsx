@@ -10,14 +10,14 @@ export default function ServicesTabs({ services }: { services: ServiceInfo[] }) 
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-2 border-b border-gray-200">
+      <div className="flex overflow-x-auto border-b border-gray-200 md:flex-wrap">
         {services.map((service, index) => (
           <button
             key={service.slug}
             type="button"
             onClick={() => setActiveIndex(index)}
             aria-pressed={index === activeIndex}
-            className={`border-b-2 px-4 py-3 text-sm font-semibold transition ${
+            className={`shrink-0 whitespace-nowrap border-b-2 px-6 py-4 text-sm font-semibold transition md:flex-1 md:whitespace-normal ${
               index === activeIndex
                 ? "border-black text-black"
                 : "border-transparent text-gray-400 hover:text-gray-600"
@@ -29,17 +29,20 @@ export default function ServicesTabs({ services }: { services: ServiceInfo[] }) 
       </div>
 
       <div className="mt-8 rounded-lg bg-white p-6 shadow-sm md:p-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-start">
-          <div className="flex items-start gap-4 md:w-1/2">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-xl">
-              {active.icon}
-            </div>
-            <div className="min-w-0 flex-1">
+        <div className="flex flex-col gap-6 md:flex-row">
+          <div className="flex min-w-0 flex-1 flex-col md:w-1/2">
+            <div>
               <Link href={active.href} className="text-lg font-bold text-black hover:underline">
                 {active.title}
               </Link>
               <p className="mt-2 text-sm text-gray-500">{active.description}</p>
             </div>
+            <Link
+              href="/contact"
+              className="mt-6 inline-block self-start rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800 md:mt-auto"
+            >
+              상담 신청하기
+            </Link>
           </div>
 
           <div className="flex min-w-0 flex-col gap-2 md:w-1/2">
