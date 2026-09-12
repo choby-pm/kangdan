@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import HeroVideo from "@/components/HeroVideo";
@@ -80,11 +81,19 @@ const PROCESS_STEPS = [
 export default function HomePage() {
   return (
     <div>
-      <section className="relative flex min-h-[70dvh] flex-col items-start justify-center overflow-hidden px-6 py-24 text-white sm:px-12">
+      <section className="relative flex min-h-[70dvh] flex-col items-center justify-center overflow-hidden px-6 py-24 text-center text-white sm:px-12">
         <HeroVideo src="/videos/hero2.mp4" />
         <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 max-w-3xl text-left">
-          <p className="text-lg leading-relaxed md:text-2xl">
+        <div className="relative z-10 mx-auto max-w-3xl">
+          <Image
+            src="/images/whitecolumn.png"
+            alt="노동법률사무소 강단"
+            width={573}
+            height={279}
+            className="mx-auto h-20 w-auto md:h-28"
+            priority
+          />
+          <p className="mt-8 text-lg leading-relaxed md:text-2xl">
             가망없어 보이는 싸움, 어둠 속을 홀로 걷는 그 마음을 잘 알기에
           </p>
           <p className="mt-2 text-2xl font-bold leading-relaxed md:text-4xl">
