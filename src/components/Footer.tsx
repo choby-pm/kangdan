@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t bg-black text-white">
       <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-stretch">
-          <div className="text-center md:text-left">
+          <div className="order-2 text-center md:order-1 md:text-left">
             <p className="text-xl font-bold">노동법률사무소 강단</p>
             <p className="mt-3 text-sm text-gray-300">
               대표 : 최규민 | 사업자등록번호: 123-45-67890
@@ -36,7 +36,7 @@ export default function Footer() {
             alt="노동법률사무소 강단"
             width={573}
             height={279}
-            className="h-full w-auto"
+            className="order-1 h-full w-auto md:order-2"
           />
         </div>
 
