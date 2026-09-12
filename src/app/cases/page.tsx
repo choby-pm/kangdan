@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CasesList from "@/components/CasesList";
 
 export const metadata: Metadata = {
   title: "해결사례 | 노동법률사무소 강단",
@@ -11,6 +12,9 @@ export default function CasesPage() {
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold">해결사례</h1>
+      <div className="mx-auto mt-8 max-w-5xl">
+        <CasesList />
+      </div>
     </div>
   );
 }
