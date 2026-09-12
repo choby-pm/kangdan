@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Noto_Sans_KR } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import MobileContactBar from "@/components/MobileContactBar";
 import "./globals.css";
 
-const nexonFootballGothic = localFont({
-  src: [
-    { path: "../fonts/NEXONFootballGothicLA1.woff", weight: "300", style: "normal" },
-    { path: "../fonts/NEXONFootballGothicBA1.woff", weight: "700", style: "normal" },
-  ],
-  variable: "--font-nexon",
+const notoSansKR = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: "variable",
+  variable: "--font-noto-sans-kr",
   display: "swap",
 });
 
@@ -21,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ko" className={`${nexonFootballGothic.variable} h-full antialiased`}>
+    <html lang="ko" className={`${notoSansKR.variable} h-full antialiased`}>
       <body className="min-h-dvh flex flex-col">
         <NavBar />
         <main className="flex-1 pb-20 lg:pb-0">{children}</main>

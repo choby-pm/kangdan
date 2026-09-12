@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -49,8 +50,15 @@ export default function NavBar() {
   return (
     <header className="sticky top-0 z-50 border-b bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="text-lg font-bold" onClick={closeMobileMenu}>
-          강단
+        <Link href="/" onClick={closeMobileMenu}>
+          <Image
+            src="/images/logo2.png"
+            alt="노동법률사무소 강단"
+            width={660}
+            height={108}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="hidden lg:flex lg:items-center lg:gap-6 text-sm">
