@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SERVICES } from "@/data/services";
 
 export const metadata: Metadata = {
   title: "업무분야 | 노동법률사무소 강단",
@@ -15,25 +16,40 @@ export const metadata: Metadata = {
   ],
 };
 
-const SERVICES = [
-  { href: "/services/unfair-dismissal", label: "부당해고·부당징계" },
-  { href: "/services/wage-dispute", label: "임금체불·퇴직금" },
-  { href: "/services/workplace-harassment", label: "직장 내 괴롭힘·성희롱" },
-  { href: "/services/industrial-accident", label: "산업재해" },
-  { href: "/services/labor-committee", label: "노동위원회 대응" },
-];
-
 export default function ServicesPage() {
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold">업무분야</h1>
-      <ul className="mt-4 space-y-2">
+
+      <div className="mx-auto mt-8 flex max-w-5xl flex-col gap-6">
         {SERVICES.map((service) => (
-          <li key={service.href}>
-            <Link href={service.href}>{service.label}</Link>
-          </li>
+          <div key={service.slug} className="w-full rounded-lg border border-gray-200 p-6 md:p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-xl">
+                {service.icon}
+              </div>
+              <div className="flex-1">
+                <Link href={service.href} className="text-xl font-bold text-black hover:underline">
+                  {service.title}
+                </Link>
+                <p className="mt-2 text-gray-600">{service.description}</p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {service.faq.slice(0, 3).map((item) => (
+                    <Link
+                      key={item.question}
+                      href={`${service.href}#faq`}
+                      className="rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                    >
+                      Q. {item.question}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
