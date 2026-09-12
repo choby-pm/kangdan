@@ -11,7 +11,7 @@ type NavItem = {
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { href: "/about", label: "사무소소개" },
+  { href: "/about", label: "대표노무사" },
   {
     href: "/services",
     label: "업무분야",
