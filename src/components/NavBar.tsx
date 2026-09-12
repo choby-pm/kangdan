@@ -123,25 +123,34 @@ export default function NavBar() {
       </div>
 
       {mobileOpen && (
-        <nav className="border-t bg-white px-4 pb-4 text-sm lg:hidden">
+        <nav className="absolute inset-x-0 top-full border-t bg-white px-4 pb-4 text-sm shadow-lg lg:hidden">
           {NAV_ITEMS.map((item) =>
             item.children ? (
               <div key={item.href} className="border-b">
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between py-3 text-left"
-                  onClick={() =>
-                    setOpenAccordion((prev) => (prev === item.href ? null : item.href))
-                  }
-                  aria-expanded={openAccordion === item.href}
-                >
-                  <span
-                    className={isItemActive(pathname, item) ? "font-semibold" : "text-gray-700"}
+                <div className="flex w-full items-center justify-between">
+                  <Link
+                    href={item.href}
+                    className={`flex-1 py-3 ${
+                      isItemActive(pathname, item) ? "font-semibold" : "text-gray-700"
+                    }`}
+                    onClick={closeMobileMenu}
                   >
                     {item.label}
-                  </span>
-                  <span aria-hidden>{openAccordion === item.href ? "−" : "+"}</span>
-                </button>
+                  </Link>
+                  <button
+                    type="button"
+                    className="px-2 py-3"
+                    onClick={() =>
+                      setOpenAccordion((prev) => (prev === item.href ? null : item.href))
+                    }
+                    aria-expanded={openAccordion === item.href}
+                    aria-label={
+                      openAccordion === item.href ? "하위 메뉴 닫기" : "하위 메뉴 열기"
+                    }
+                  >
+                    <span aria-hidden>{openAccordion === item.href ? "−" : "+"}</span>
+                  </button>
+                </div>
                 {openAccordion === item.href && (
                   <div className="flex flex-col gap-1 pb-3 pl-4">
                     {item.children.map((child) => (
@@ -172,7 +181,7 @@ export default function NavBar() {
           )}
           <Link
             href="/contact"
-            className="mt-4 block rounded-full bg-gray-900 px-4 py-3 text-center font-semibold text-white"
+            className="mt-4 inline-block rounded-full bg-gray-900 px-5 py-2 text-sm font-semibold text-white"
             onClick={closeMobileMenu}
           >
             상담신청

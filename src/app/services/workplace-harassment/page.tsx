@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FaqAccordion from "@/components/FaqAccordion";
+import ServiceSubNav from "@/components/ServiceSubNav";
 import { getServiceBySlug } from "@/data/services";
 
 export const metadata: Metadata = {
@@ -13,16 +14,19 @@ const service = getServiceBySlug("workplace-harassment")!;
 
 export default function WorkplaceHarassmentPage() {
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold">{service.title}</h1>
-      <p className="mt-4 max-w-2xl text-gray-600">{service.description}</p>
+    <div>
+      <ServiceSubNav currentSlug="workplace-harassment" />
+      <div className="p-8">
+        <h1 className="text-2xl font-bold">{service.title}</h1>
+        <p className="mt-4 max-w-2xl text-gray-600">{service.description}</p>
 
-      <section id="faq" className="mx-auto mt-12 max-w-2xl scroll-mt-24">
-        <h2 className="text-lg font-bold text-black">자주 묻는 질문</h2>
-        <div className="mt-4">
-          <FaqAccordion items={service.faq} />
-        </div>
-      </section>
+        <section id="faq" className="mx-auto mt-12 max-w-2xl scroll-mt-24">
+          <h2 className="text-lg font-bold text-black">자주 묻는 질문</h2>
+          <div className="mt-4">
+            <FaqAccordion items={service.faq} />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
