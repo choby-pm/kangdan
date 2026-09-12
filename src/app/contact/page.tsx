@@ -13,11 +13,6 @@ export default function ContactPage() {
     <div className="px-6 py-16">
       <div className="mx-auto max-w-5xl">
         <h1 className="text-2xl font-bold">상담신청</h1>
-        <div className="mt-6 space-y-2 text-gray-600">
-          <p>전화(휴대폰) 010-4488-6131</p>
-          <p>전화(사무실) 070-4142-0501</p>
-          <p>이메일 ckmcpla@naver.com</p>
-        </div>
 
         <div className="mx-auto mt-10 max-w-xl">
           <ContactForm />
