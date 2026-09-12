@@ -21,10 +21,9 @@ export default function AboutPage() {
     <div>
       <section className="bg-black px-6 py-16 text-center text-white md:py-24">
         <p className="mx-auto max-w-2xl text-lg leading-relaxed md:text-xl">
-          가망없어 보이는 싸움,
-          <br />
-          어둠 속을 홀로 걷는 그 마음을 잘 알기에
-          <br />
+          가망없어 보이는 싸움, 어둠 속을 홀로 걷는 그 마음을 잘 알기에
+        </p>
+        <p className="mx-auto mt-2 max-w-2xl text-xl font-bold leading-relaxed md:text-3xl">
           노동법률사무소 강단이 함께하겠습니다.
         </p>
       </section>
