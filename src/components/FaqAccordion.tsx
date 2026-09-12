@@ -20,7 +20,7 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
 
   return (
     <div>
-      <div className="divide-y divide-gray-200 border-y">
+      <div className="min-h-[290px] divide-y divide-gray-200 border-y">
         {pageItems.map((item, indexOnPage) => {
           const index = page * PAGE_SIZE + indexOnPage;
           const isOpen = openIndex === index;
