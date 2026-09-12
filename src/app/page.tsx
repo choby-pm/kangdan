@@ -93,10 +93,10 @@ export default function HomePage() {
             className="mx-auto h-20 w-auto md:h-28"
             priority
           />
-          <p className="mt-8 text-lg leading-relaxed md:text-2xl">
+          <p className="mt-8 text-sm leading-relaxed md:text-lg">
             가망없어 보이는 싸움, 어둠 속을 홀로 걷는 그 마음을 잘 알기에
           </p>
-          <p className="mt-2 text-2xl font-bold leading-relaxed md:text-4xl">
+          <p className="mt-2 text-lg font-bold leading-relaxed md:text-2xl">
             노동법률사무소 강단이 함께하겠습니다.
           </p>
           <Link
