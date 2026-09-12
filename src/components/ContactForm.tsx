@@ -138,11 +138,16 @@ export default function ContactForm() {
       <div className="rounded-md border border-gray-200 bg-gray-50 p-4 text-xs leading-relaxed text-gray-600">
         <p className="font-semibold text-gray-700">개인정보 수집 및 이용 동의</p>
         <p className="mt-2">
-          수집 항목: 이름, 전화번호, 이메일, 상담분야, 문의내용
+          수집 목적: 문의 접수 및 상담
           <br />
-          수집 목적: 법률상담 신청에 대한 답변 및 상담 진행
+          수집 항목: 이름, Email, 제목, 내용
           <br />
-          보유 기간: 상담 완료 후 1년까지 보관 후 파기
+          보유 기간: 목적 달성 완료 시 즉시 삭제 (단, 내부방침 및 관계법령의 규정에 의하여
+          보존할 필요가 있는 경우 일정기간 동안 보관)
+        </p>
+        <p className="mt-2">
+          ※ 개인정보 수집 및 이용에 동의하지 않을 권리가 있으며, 동의를 거부하실 경우 문의
+          접수 및 상담이 불가합니다.
         </p>
         <label className="mt-3 flex items-center gap-2 font-semibold text-black">
           <input
