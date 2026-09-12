@@ -182,7 +182,7 @@ export default function HomePage() {
       <FadeIn>
         <section className="bg-black px-6 py-20 text-center text-white">
           <p className="text-xl font-bold md:text-2xl">
-            혼자 걷던 어둠 속, 이제 강단이 함께합니다
+            무거운 마음의 짐, 강단이 함께 들어드리겠습니다
           </p>
           <Link
             href="/contact"
