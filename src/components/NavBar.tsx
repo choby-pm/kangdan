@@ -1,25 +1,176 @@
-import Link from "next/link";
+"use client";
 
-const NAV_LINKS = [
-  { href: "/", label: "홈" },
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+
+type NavItem = {
+  href: string;
+  label: string;
+  children?: { href: string; label: string }[];
+};
+
+const NAV_ITEMS: NavItem[] = [
   { href: "/about", label: "사무소소개" },
-  { href: "/services", label: "업무분야" },
+  {
+    href: "/services",
+    label: "업무분야",
+    children: [
+      { href: "/services/unfair-dismissal", label: "부당해고·부당징계" },
+      { href: "/services/wage-dispute", label: "임금체불·퇴직금" },
+      { href: "/services/workplace-harassment", label: "직장 내 괴롭힘·성희롱" },
+      { href: "/services/industrial-accident", label: "산업재해" },
+      { href: "/services/labor-committee", label: "노동위원회 대응" },
+    ],
+  },
   { href: "/cases", label: "해결사례" },
-  { href: "/columns", label: "칼럼" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "상담신청" },
+  { href: "/location", label: "오시는 길" },
 ];
 
+function isPathActive(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function isItemActive(pathname: string, item: NavItem) {
+  if (isPathActive(pathname, item.href)) return true;
+  return item.children?.some((child) => isPathActive(pathname, child.href)) ?? false;
+}
+
 export default function NavBar() {
+  const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setOpenAccordion(null);
+  };
+
   return (
-    <header className="border-b">
-      <nav className="flex flex-wrap gap-4 p-4 text-sm">
-        {NAV_LINKS.map((link) => (
-          <Link key={link.href} href={link.href}>
-            {link.label}
+    <header className="sticky top-0 z-50 border-b bg-white">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <Link href="/" className="text-lg font-bold" onClick={closeMobileMenu}>
+          강단
+        </Link>
+
+        <nav className="hidden lg:flex lg:items-center lg:gap-6 text-sm">
+          {NAV_ITEMS.map((item) =>
+            item.children ? (
+              <div key={item.href} className="group relative">
+                <Link
+                  href={item.href}
+                  className={`py-2 ${
+                    isItemActive(pathname, item)
+                      ? "font-semibold text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+                <div className="absolute left-0 top-full hidden min-w-max flex-col rounded-md border bg-white py-2 shadow-lg group-hover:flex">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className="whitespace-nowrap px-4 py-2 text-gray-600 hover:bg-gray-50"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={
+                  isItemActive(pathname, item)
+                    ? "font-semibold text-gray-900"
+                    : "text-gray-600 hover:text-gray-900"
+                }
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
+          <Link
+            href="/contact"
+            className="rounded-full bg-gray-900 px-4 py-2 font-semibold text-white hover:bg-gray-700"
+          >
+            상담신청
           </Link>
-        ))}
-      </nav>
+        </nav>
+
+        <button
+          type="button"
+          className="flex flex-col gap-1.5 lg:hidden"
+          aria-label="메뉴 열기"
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((prev) => !prev)}
+        >
+          <span className="block h-0.5 w-6 bg-gray-900" />
+          <span className="block h-0.5 w-6 bg-gray-900" />
+          <span className="block h-0.5 w-6 bg-gray-900" />
+        </button>
+      </div>
+
+      {mobileOpen && (
+        <nav className="border-t bg-white px-4 pb-4 text-sm lg:hidden">
+          {NAV_ITEMS.map((item) =>
+            item.children ? (
+              <div key={item.href} className="border-b">
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between py-3 text-left"
+                  onClick={() =>
+                    setOpenAccordion((prev) => (prev === item.href ? null : item.href))
+                  }
+                  aria-expanded={openAccordion === item.href}
+                >
+                  <span
+                    className={isItemActive(pathname, item) ? "font-semibold" : "text-gray-700"}
+                  >
+                    {item.label}
+                  </span>
+                  <span aria-hidden>{openAccordion === item.href ? "−" : "+"}</span>
+                </button>
+                {openAccordion === item.href && (
+                  <div className="flex flex-col gap-1 pb-3 pl-4">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="py-1 text-gray-600"
+                        onClick={closeMobileMenu}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`block border-b py-3 ${
+                  isItemActive(pathname, item) ? "font-semibold" : "text-gray-700"
+                }`}
+                onClick={closeMobileMenu}
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
+          <Link
+            href="/contact"
+            className="mt-4 block rounded-full bg-gray-900 px-4 py-3 text-center font-semibold text-white"
+            onClick={closeMobileMenu}
+          >
+            상담신청
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }
