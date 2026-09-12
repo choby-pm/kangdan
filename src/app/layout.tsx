@@ -22,7 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="ko" className={`${notoSansKR.variable} h-full antialiased`}>
       <body className="min-h-dvh flex flex-col">
         <NavBar />
-        <main className="flex-1 pb-20 lg:pb-0">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
         <MobileContactBar />
       </body>
