@@ -85,9 +85,11 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10">
           <p className="mx-auto max-w-2xl text-lg leading-relaxed md:text-2xl">
-            &ldquo;가망없어 보이는 그 싸움, 캄캄한 어둠 속을 혼자 걷는 그 마음을
-            <br className="hidden md:block" /> 너무나도 잘 알기에 노동법률사무소
-            강단이 함께하겠습니다.&rdquo;
+            &ldquo;가망없어 보이는 싸움,
+            <br />
+            어둠 속을 홀로 걷는 그 마음을 잘 알기에
+            <br />
+            노동법률사무소 강단이 함께하겠습니다.&rdquo;
           </p>
           <Link
             href="/contact"
