@@ -15,10 +15,10 @@ const service = getServiceBySlug("unfair-dismissal")!;
 export default function UnfairDismissalPage() {
   return (
     <div>
-      <ServiceSubNav currentSlug="unfair-dismissal" />
       <div className="px-6 py-16">
         <div className="mx-auto max-w-5xl">
-          <h1 className="text-2xl font-bold">{service.title}</h1>
+          <ServiceSubNav currentSlug="unfair-dismissal" />
+          <h1 className="mt-8 text-2xl font-bold">{service.title}</h1>
           <p className="mt-4 max-w-2xl text-gray-600">{service.description}</p>
 
           <section id="faq" className="mx-auto mt-12 max-w-2xl scroll-mt-24">
