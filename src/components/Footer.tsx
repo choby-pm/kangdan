@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="border-t bg-black text-white">
       <div className="mx-auto max-w-5xl px-6 py-12">
-        <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-stretch">
+        <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-center">
           <div className="order-2 text-center md:order-1 md:text-left">
             <p className="text-xl font-bold">노동법률사무소 강단</p>
             <p className="mt-3 text-sm text-gray-300">
@@ -36,7 +36,7 @@ export default function Footer() {
             alt="노동법률사무소 강단"
             width={573}
             height={279}
-            className="order-1 h-full w-auto md:order-2"
+            className="order-1 h-24 w-auto md:order-2"
           />
         </div>
 
