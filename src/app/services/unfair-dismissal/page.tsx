@@ -16,16 +16,18 @@ export default function UnfairDismissalPage() {
   return (
     <div>
       <ServiceSubNav currentSlug="unfair-dismissal" />
-      <div className="p-8">
-        <h1 className="text-2xl font-bold">{service.title}</h1>
-        <p className="mt-4 max-w-2xl text-gray-600">{service.description}</p>
+      <div className="px-6 py-16">
+        <div className="mx-auto max-w-5xl">
+          <h1 className="text-2xl font-bold">{service.title}</h1>
+          <p className="mt-4 max-w-2xl text-gray-600">{service.description}</p>
 
-        <section id="faq" className="mx-auto mt-12 max-w-2xl scroll-mt-24">
-          <h2 className="text-lg font-bold text-black">자주 묻는 질문</h2>
-          <div className="mt-4">
-            <FaqAccordion items={service.faq} />
-          </div>
-        </section>
+          <section id="faq" className="mx-auto mt-12 max-w-2xl scroll-mt-24">
+            <h2 className="text-lg font-bold text-black">자주 묻는 질문</h2>
+            <div className="mt-4">
+              <FaqAccordion items={service.faq} />
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );

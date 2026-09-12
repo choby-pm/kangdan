@@ -49,14 +49,19 @@ export default function PageTransition({ children }: { children: React.ReactNode
   const barCount = useBarCount();
   const [displayed, setDisplayed] = useState(children);
   const [phase, setPhase] = useState<"idle" | "cover" | "reveal">("idle");
-  const isFirstRender = useRef(true);
+  // Initialized to the current pathname, so the effect below is a no-op
+  // on the very first mount. Comparing against pathname (rather than a
+  // plain "have I run yet" boolean) also makes this safe under
+  // StrictMode's dev-mode double-invoke: the second invocation sees the
+  // ref already updated and skips, instead of firing a bogus transition
+  // on initial page load.
+  const prevPathname = useRef(pathname);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      setDisplayed(children);
+    if (pathname === prevPathname.current) {
       return;
     }
+    prevPathname.current = pathname;
 
     setPhase("cover");
     const coverMs = phaseDuration(barCount) * 1000;

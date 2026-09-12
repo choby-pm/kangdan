@@ -10,10 +10,12 @@ export const metadata: Metadata = {
 
 export default function CasesPage() {
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold">해결사례</h1>
-      <div className="mx-auto mt-8 max-w-5xl">
-        <CasesList />
+    <div className="px-6 py-16">
+      <div className="mx-auto max-w-5xl">
+        <h1 className="text-2xl font-bold">해결사례</h1>
+        <div className="mt-8">
+          <CasesList />
+        </div>
       </div>
     </div>
   );
