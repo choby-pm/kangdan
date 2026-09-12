@@ -142,7 +142,7 @@ export default function HomePage() {
               프로필 사진
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-900">이강단 공인노무사</h2>
+              <h2 className="text-xl font-bold text-slate-900">최규민 공인노무사</h2>
               <p className="mt-2 text-gray-600">
                 굳은 의지로 끝까지 의뢰인의 편에 서는 노동법률사무소 강단의
                 대표노무사입니다.

@@ -11,6 +11,11 @@ export default function ContactPage() {
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold">상담신청</h1>
+      <div className="mt-6 space-y-2 text-gray-600">
+        <p>전화(휴대폰) 010-4488-6131</p>
+        <p>전화(사무실) 070-4142-0501</p>
+        <p>이메일 ckmcpla@naver.com</p>
+      </div>
     </div>
   );
 }

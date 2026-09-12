@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 
 const CAREER_ITEMS = [
   "現) 노동법률사무소 강단 대표노무사",
-  "前) 서울지방노동위원회 권리구제 대리인",
-  "前) 중소기업 인사노무 자문 노무법인 소속 노무사",
-  "직장 내 괴롭힘·부당해고 사건 다수 수행",
+  "前) ○○노무법인 노동분쟁팀장",
+  "前) 서울지방노동위원회 권리구제 대리인 다수 수행",
+  "부당해고·임금체불·직장 내 괴롭힘 사건 다수 해결",
 ];
 
-const EDUCATION_ITEMS = ["○○대학교 법학과 졸업", "공인노무사 시험 합격 (제○○회)"];
+const EDUCATION_ITEMS = ["○○대학교 법학과 졸업", "제○○회 공인노무사 시험 합격"];
 
 export default function AboutPage() {
   return (
@@ -33,7 +33,7 @@ export default function AboutPage() {
             프로필 사진
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">이강단 공인노무사</h1>
+            <h1 className="text-2xl font-bold text-slate-900">최규민 공인노무사</h1>
 
             <h2 className="mt-6 font-semibold text-slate-700">경력</h2>
             <ul className="mt-2 space-y-1 text-gray-600">
