@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllColumns } from "@/lib/columns";
+
+export const metadata: Metadata = {
+  title: "칼럼 | 노동법률사무소 강단",
+  description:
+    "부당해고, 임금체불, 직장 내 괴롭힘 등 노동 문제에 대한 노동법률사무소 강단의 칼럼을 확인하세요.",
+  keywords: ["노동법 칼럼", "노무 칼럼", "노동법률사무소 강단"],
+};
 
 export default function ColumnsPage() {
   const columns = getAllColumns();

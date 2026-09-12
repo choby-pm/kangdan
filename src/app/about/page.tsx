@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "대표노무사 소개 | 노동법률사무소 강단",
+  description:
+    "노동법률사무소 강단 대표노무사의 경력, 학력, 상담 철학을 소개합니다. 부당해고·임금체불 등 노동 문제를 함께 해결합니다.",
+  keywords: ["공인노무사", "대표노무사", "노동법률사무소 강단", "노무사 소개"],
+};
+
 const CAREER_ITEMS = [
   "現) 노동법률사무소 강단 대표노무사",
   "前) 서울지방노동위원회 권리구제 대리인",

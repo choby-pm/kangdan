@@ -1,6 +1,23 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getColumnBySlug } from "@/lib/columns";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const column = getColumnBySlug(slug);
+
+  if (!column) return {};
+
+  return {
+    title: `${column.title} | 노동법률사무소 강단 칼럼`,
+    description: column.excerpt,
+  };
+}
 
 export default async function ColumnDetailPage({
   params,

@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import MobileContactBar from "@/components/MobileContactBar";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const nexonFootballGothic = localFont({
+  src: [
+    { path: "../fonts/NEXONFootballGothicLA1.woff", weight: "300", style: "normal" },
+    { path: "../fonts/NEXONFootballGothicBA1.woff", weight: "700", style: "normal" },
+  ],
+  variable: "--font-nexon",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -22,10 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="ko" className={`${nexonFootballGothic.variable} h-full antialiased`}>
       <body className="min-h-dvh flex flex-col">
         <NavBar />
         <main className="flex-1 pb-20 lg:pb-0">{children}</main>
