@@ -108,26 +108,29 @@ export default function HomePage() {
                   key={service.href}
                   className="w-full rounded-lg bg-white p-6 shadow-sm md:p-8"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-xl">
-                      {service.icon}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <Link href={service.href} className="text-lg font-bold text-black hover:underline">
-                        {service.title}
-                      </Link>
-                      <p className="mt-2 text-sm text-gray-500">{service.description}</p>
-                      <div className="mt-4 flex flex-col gap-2">
-                        {service.faq.slice(0, 3).map((item) => (
-                          <Link
-                            key={item.question}
-                            href={`${service.href}#faq`}
-                            className="block truncate rounded-md border border-gray-300 px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 md:overflow-visible md:text-clip md:whitespace-normal"
-                          >
-                            Q. {item.question}
-                          </Link>
-                        ))}
+                  <div className="flex flex-col gap-6 md:flex-row md:items-start">
+                    <div className="flex items-start gap-4 md:w-1/2">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-xl">
+                        {service.icon}
                       </div>
+                      <div className="min-w-0 flex-1">
+                        <Link href={service.href} className="text-lg font-bold text-black hover:underline">
+                          {service.title}
+                        </Link>
+                        <p className="mt-2 text-sm text-gray-500">{service.description}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex min-w-0 flex-col gap-2 md:w-1/2">
+                      {service.faq.slice(0, 3).map((item) => (
+                        <Link
+                          key={item.question}
+                          href={`${service.href}#faq`}
+                          className="block truncate rounded-md border border-gray-300 px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 md:overflow-visible md:text-clip md:whitespace-normal"
+                        >
+                          Q. {item.question}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </div>
