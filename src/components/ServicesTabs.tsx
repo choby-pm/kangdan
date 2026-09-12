@@ -50,6 +50,7 @@ export default function ServicesTabs({ services }: { services: ServiceInfo[] }) 
               <Link
                 key={item.question}
                 href={`${active.href}#faq`}
+                scroll={false}
                 className="block truncate rounded-md border border-gray-300 px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 md:overflow-visible md:text-clip md:whitespace-normal"
               >
                 Q. {item.question}
