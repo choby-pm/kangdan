@@ -19,7 +19,7 @@ const EDUCATION_ITEMS = ["○○대학교 법학과 졸업", "제○○회 공�
 export default function AboutPage() {
   return (
     <div>
-      <section className="bg-slate-950 px-6 py-16 text-center text-white md:py-24">
+      <section className="bg-black px-6 py-16 text-center text-white md:py-24">
         <p className="mx-auto max-w-2xl text-lg leading-relaxed md:text-xl">
           &ldquo;가망없어 보이는 그 싸움, 캄캄한 어둠 속을 혼자 걷는 그 마음을
           <br className="hidden md:block" /> 너무나도 잘 알기에 노동법률사무소
@@ -33,16 +33,16 @@ export default function AboutPage() {
             프로필 사진
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">최규민 공인노무사</h1>
+            <h1 className="text-2xl font-bold text-black">최규민 공인노무사</h1>
 
-            <h2 className="mt-6 font-semibold text-slate-700">경력</h2>
+            <h2 className="mt-6 font-semibold text-gray-700">경력</h2>
             <ul className="mt-2 space-y-1 text-gray-600">
               {CAREER_ITEMS.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
 
-            <h2 className="mt-6 font-semibold text-slate-700">학력</h2>
+            <h2 className="mt-6 font-semibold text-gray-700">학력</h2>
             <ul className="mt-2 space-y-1 text-gray-600">
               {EDUCATION_ITEMS.map((item) => (
                 <li key={item}>{item}</li>
@@ -54,10 +54,10 @@ export default function AboutPage() {
 
       <section className="bg-gray-50 px-6 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-serif text-sm italic tracking-widest text-amber-600">
+          <p className="font-serif text-sm italic tracking-widest text-gray-500">
             about the name
           </p>
-          <h2 className="mt-2 text-xl font-bold text-slate-900">
+          <h2 className="mt-2 text-xl font-bold text-black">
             &ldquo;강단(剛斷)&rdquo;이라는 이름의 의미
           </h2>
           <p className="mt-4 leading-relaxed text-gray-600">

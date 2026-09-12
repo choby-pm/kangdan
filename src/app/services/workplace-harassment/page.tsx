@@ -32,7 +32,7 @@ export default function WorkplaceHarassmentPage() {
       <h1 className="text-2xl font-bold">직장 내 괴롭힘·성희롱</h1>
 
       <section className="mx-auto mt-12 max-w-2xl">
-        <h2 className="text-lg font-bold text-slate-900">자주 묻는 질문</h2>
+        <h2 className="text-lg font-bold text-black">자주 묻는 질문</h2>
         <div className="mt-4">
           <FaqAccordion items={FAQ_ITEMS} />
         </div>

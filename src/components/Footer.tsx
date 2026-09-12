@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-slate-950 text-slate-300">
+    <footer className="border-t bg-black text-gray-300">
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-10 md:grid-cols-2">
         <div>
           <p className="text-lg font-bold text-white">노동법률사무소 강단</p>
@@ -24,7 +24,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-slate-800 px-6 py-4 text-center text-xs text-slate-500">
+      <div className="border-t border-gray-800 px-6 py-4 text-center text-xs text-gray-500">
         © 2026 노동법률사무소 강단. All rights reserved.
       </div>
     </footer>

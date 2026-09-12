@@ -15,7 +15,7 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
           <div key={item.question}>
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 py-4 text-left font-semibold text-slate-900"
+              className="flex w-full items-center justify-between gap-4 py-4 text-left font-semibold text-black"
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
             >
