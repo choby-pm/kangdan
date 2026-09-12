@@ -32,6 +32,13 @@ function scrollToHash() {
   target?.scrollIntoView({ block: "start" });
 }
 
+// Switching between the /services/[slug] tabs re-renders the same layout
+// with just the detail content changing, so the full-screen cover/reveal
+// animation is skipped there and only the content swaps instantly.
+function isServiceDetailPath(path: string) {
+  return path.startsWith("/services/");
+}
+
 const barVariants: Variants = {
   hidden: { y: "100%" },
   cover: (i: number) => ({
@@ -47,7 +54,7 @@ const barVariants: Variants = {
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const barCount = useBarCount();
-  const [displayed, setDisplayed] = useState(children);
+  const [displayed, setDisplayed] = useState<React.ReactNode>(children);
   const [phase, setPhase] = useState<"idle" | "cover" | "reveal">("idle");
   // Initialized to the current pathname, so the effect below is a no-op
   // on the very first mount. Comparing against pathname (rather than a
@@ -61,9 +68,17 @@ export default function PageTransition({ children }: { children: React.ReactNode
     if (pathname === prevPathname.current) {
       return;
     }
+    const previousPath = prevPathname.current;
     prevPathname.current = pathname;
 
+    if (isServiceDetailPath(previousPath) && isServiceDetailPath(pathname)) {
+      setDisplayed(children);
+      scrollToHash();
+      return;
+    }
+
     setPhase("cover");
+    setDisplayed(null);
     const coverMs = phaseDuration(barCount) * 1000;
 
     const coverTimer = setTimeout(() => {
